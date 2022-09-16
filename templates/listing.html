@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+
+<section class="text-gray-600 body-font">
+  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+        
+
+      <div id="carouselExampleControls" class="carousel slide relative" data-bs-ride="carousel">
+        <div class="carousel-inner relative w-full overflow-hidden">
+          <div class="carousel-item active relative float-left w-full">
+            <img
+              src="{{ listing.image.url}}"
+              class="block w-full"
+              alt="Wild Landscape"
+            />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="{{ listing.image1.url}}"
+              class="block w-full"
+              alt="Camera"
+            />
+          </div>
+          <div class="carousel-item relative float-left w-full">
+            <img
+              src="{{ listing.image2.url}}"
+              class="block w-full"
+              alt="Exotic Fruits"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+  </div>
+
+
+
+
+
+
+
+    <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-bold text-gray-900">{{listing.title}}
+      </h1>
+      <p class="mb-8 leading-relaxed">
+          Address: {{listing.address}}<br>
+          Discription: {{listing.discription}}<br>
+          Pricec: ${{listing.price}}
+      </p>
+      <div class="flex justify-center">
+        {% if request.user.is_superuser %}
+          <a href ="./{{listing.pk}}/edit"><button class=" inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">EDIT</button></a>
+          <a href ="./{{listing.pk}}/delete"><button class="ml-4 inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg">DELETE</button></a>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}
+
+
